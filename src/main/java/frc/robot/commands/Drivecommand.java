@@ -5,6 +5,9 @@
 package frc.robot.commands;
 
 import frc.robot.subsystems.RomiDrivetrain;
+
+import java.util.function.DoubleSupplier;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Subsystem;
@@ -24,9 +27,9 @@ public class Drivecommand extends Command {
    *
    * @param subsystem The subsystem used by this command.
    */
-  public Drivecommand(RomiDrivetrain subsystem, CommandJoystick controller ) {
+  public Drivecommand(RomiDrivetrain subsystem, DoubleSupplier speed) {
     m_subsystem = subsystem;
-    m_driver_controller = controller; 
+    
     addRequirements(subsystem);
   }
 
@@ -36,7 +39,7 @@ public class Drivecommand extends Command {
 
   @Override
   public void execute() {
-    f.arcadeDrive(-m_driver_controller.getY() * SPEED, -m_driver_controller.getX() * SPEED);
+    m_subsystem.arcadeDrive();
   }
 
   // Called once the command ends or is interrupted.

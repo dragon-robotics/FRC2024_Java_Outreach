@@ -1,23 +1,19 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import edu.wpi.first.wpilibj.motorcontrol.Spark;
 
-public class Intake extends SubsystemBase{
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkLowLevel.MotorType;
+public class IntakeSubsystem extends SubsystemBase{
 
 
-    private final Spark IntakeMotor = new Spark(4);
+    private final CANSparkMax IntakeMotor = new CANSparkMax(4,MotorType.kBrushless);
     
 
-    public double IntakeForward(double speed)
+    public double Setspeed(double speed)
     {
         IntakeMotor.set(ClampSpeed(speed));
         return speed;
-    }
-    public double IntakeReverse(double speed)
-    {
-        IntakeForward(-speed);
-        return speed; 
     }
     public void stopIntake()
     {

@@ -32,4 +32,10 @@ public final class Constants {
     public static final int BTN_STICK_LEFT = 9;
     public static final int BTN_STICK_RIGHT = 10;
 
+
+
+
+
+
+    // this file is where we will dump all constant variables that are used in multiple files
 }

@@ -17,7 +17,7 @@ public class IntakeSubsystem extends SubsystemBase{
     }
     public void stopIntake()
     {
-        IntakeMotor.set(0);
+        IntakeMotor.set(0); 
     }
 
     private double ClampSpeed(double speed)

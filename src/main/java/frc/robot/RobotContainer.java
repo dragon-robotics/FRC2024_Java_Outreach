@@ -4,19 +4,18 @@
 
 package frc.robot;
 
-
 import frc.robot.commands.Drivecommand;
 import frc.robot.subsystems.RomiDrivetrain;
 
 import java.sql.Driver;
 
+import edu.wpi.first.wpilibj.XboxController.Button;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandJoystick;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Constants;
 import frc.robot.commands.Auto;
-
-
 
 public class RobotContainer {
 
@@ -24,27 +23,27 @@ public class RobotContainer {
   private final RomiDrivetrain m_romiDrivetrain = new RomiDrivetrain();
   private final Auto AutoCommand = new Auto();
   private static final CommandJoystick m_driverController = new CommandJoystick(1); // Assumes port 0
+  JoystickButton exampleButton = new JoystickButton(m_driverController, Button.kA.value);
 
-
-  /** The container for the robot. Contains subsystems, OI devices, and commands. */
+  /**
+   * The container for the robot. Contains subsystems, OI devices, and commands.
+   */
   public RobotContainer() {
     // Configure the button bindings
     configureButtonBindings();
 
   }
 
-
-  private void configureButtonBindings() 
-  {
-    m_romiDrivetrain.setDefaultCommand(new Drivecommand(m_romiDrivetrain,m_driverController));
+  private void configureButtonBindings() {
+    m_romiDrivetrain.setDefaultCommand(
+        new Drivecommand(
+            m_romiDrivetrain,
+            () -> -m_driverController.getX(),
+            () -> -m_driverController.getY()
+            ));
   }
 
-
-
-
-
-
-// autonomous code down here
+  // autonomous code down here
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
@@ -53,7 +52,6 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
-      return AutoCommand;
+    return AutoCommand;
   }
 }
-

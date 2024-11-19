@@ -12,40 +12,46 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Subsystem;
 import edu.wpi.first.wpilibj2.command.button.CommandJoystick;
+import static frc.robot.Constants.*;
 
-
-/** An example command that uses an example subsystem. */
+//.** An example command that uses an example subsystem. */
 public class Drivecommand extends Command {
   private final RomiDrivetrain m_subsystem;
 
-  static double SPEED = 0.8;
+  public DoubleSupplier m_speed;
+  public DoubleSupplier m_rotation;
   static CommandJoystick m_driver_controller;
-  static double DEADZONE = 0.01;
 
   /**
    * Creates a new ExampleCommand.
    *
    * @param subsystem The subsystem used by this command.
    */
-  public Drivecommand(RomiDrivetrain subsystem, DoubleSupplier speed) {
+  public Drivecommand(RomiDrivetrain subsystem, DoubleSupplier speed, DoubleSupplier rotation) {
     m_subsystem = subsystem;
-    
+    m_speed = speed;
+    m_rotation = rotation;
+
     addRequirements(subsystem);
   }
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+
+  }
 
   @Override
   public void execute() {
-    m_subsystem.arcadeDrive();
+
+    m_subsystem.arcadeDrive(m_speed.getAsDouble(), m_rotation.getAsDouble());
+
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    
+
   }
 
   @Override

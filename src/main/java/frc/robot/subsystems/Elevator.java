@@ -8,8 +8,8 @@ import com.revrobotics.CANSparkLowLevel.MotorType;
 public class Elevator extends SubsystemBase {
 
    // Declaring motors
-   private final CANSparkMax motor1 = new CANSparkMax(0, MotorType.kBrushless);
-   private final CANSparkMax motor2 = new CANSparkMax(1, MotorType.kBrushless);
+   private final CANSparkMax motor1 = new CANSparkMax(1, MotorType.kBrushless);
+   private final CANSparkMax motor2 = new CANSparkMax(2, MotorType.kBrushless);
 
    // Default motor settings
    public Elevator() {

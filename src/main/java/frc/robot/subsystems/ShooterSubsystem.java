@@ -7,8 +7,8 @@ import edu.wpi.first.wpilibj.motorcontrol.Spark;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class ShooterSubsystem extends SubsystemBase {
-    private final CANSparkMax m_motorA = new CANSparkMax(0, MotorType.kBrushless); // Receiving ball
-    private final CANSparkMax m_motorB = new CANSparkMax(1, MotorType.kBrushless); // Shooting ball
+    private final CANSparkMax m_motorA = new CANSparkMax(4, MotorType.kBrushless); // Receiving ball
+    private final CANSparkMax m_motorB = new CANSparkMax(5, MotorType.kBrushless); // Shooting ball
 
     // Constructor to initialize subsystem, if needed
     m_motorA.restoreFactoryDefaults();
@@ -20,18 +20,18 @@ public class ShooterSubsystem extends SubsystemBase {
 
     // First motor spin
     public void spinMotor1(double speed) {
-        m_motorA.set(speed); // Set motor 1 speed
+        m_motorA.set(speed); // Set motor 4 speed
     }
 
     // Second motor spin
     public void spinMotor2(double speed) {
-        m_motorB.set(speed); // Set motor 2 speed
+        m_motorB.set(speed); // Set motor 5 speed
     }
 
     // Method to stop both motors
     public void stopMotors() {
-        m_motorA.set(0); // Stop motor 1
-        m_motorB.set(0); // Stop motor 2
+        m_motorA.set(0); // Stop motor 4
+        m_motorB.set(0); // Stop motor 5sd
     }
 
     public void Setspeed(int i) {
